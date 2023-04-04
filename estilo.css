@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+body{
+    height: 100vh;
+    width: 100vh;
+    background: radial-gradient(circle, rgba(187,4,4,1) 0%, rgba(0,0,5,1) 70%);
+}
+
+.game{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.game.x .cel:not(.x):not(.o):hover::after,
+.game.x .cel:not(.x):not(.o):hover::before,
+.game.o .cel:not(.x):not(.o):hover::after,
+.game.o .cel:not(.x):not(.o):hover::before{
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.cel{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cel.x .cel.o{
+    cursor: not-allowed;
+}
+
+.cel:nth-child(1),
+.cel:nth-child(2),
+.cel:nth-child(3){
+    border-top: none;
+}
+
+.cel:nth-child(1),
+.cel:nth-child(4),
+.cel:nth-child(7){
+    border-left: none;
+}
+
+.cel:nth-child(7),
+.cel:nth-child(8),
+.cel:nth-child(9){
+    border-bottom: none;
+}
+
+.cel:nth-child(3),
+.cel:nth-child(6),
+.cel:nth-child(9){
+    border-right: none;
+}
+
+.cel.x::before,
+.cel.x::after,
+.game.x .cel:not(.x):not(.o):hover::after,
+.game.x .cel:not(.x):not(.o):hover::before{
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px * 0.9);
+    background: #222;
+    position: absolute;
+}
+
+.cel.x::before,
+.game.x .cel:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.cel.x::after,
+.game.x .cel:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+.cel.o::before,
+.cel.o::after,
+.game.o .cel:not(.x):not(.o):hover::after,
+.game.o .cel:not(.x):not(.o):hover::before{
+    content: "";
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+    background: #111;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.mensagem{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+}
+
+button{
+    font-size: 2.5rem;
+    background-color: red;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: black;
+}
+
+button:hover{
+    color:red;
+    background-color: black;
+    border: 2px solid red;
+}
+
+p{
+    color: #fff;
+    font-size: 5rem;
+}
+
+.mensagemFinal{
+    display: flex;
+}
